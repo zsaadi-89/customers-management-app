@@ -16,6 +16,13 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "new-client" */ "../views/ClientEdit.vue"),
   },
+  {
+    path: "/client/:id",
+    name: "edit-client",
+    component: () =>
+      import(/* webpackChunkName: "edit-client" */ "../views/ClientEdit.vue"),
+    props: true, // Important to pass the id as a prop to the component
+  },
 ];
 
 const router = createRouter({

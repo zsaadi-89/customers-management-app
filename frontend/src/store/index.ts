@@ -12,7 +12,7 @@ export const store = createStore<State>({
   },
   mutations: {
     setClients(state, clients) {
-      state.clients = clients;
+      state.clients = [...clients];
     },
   },
   actions: {
@@ -27,6 +27,7 @@ export const store = createStore<State>({
             }
           }
         `,
+        fetchPolicy: "network-only", // Assure que les données sont toujours fraîches
       });
       commit("setClients", response.data.clients);
     },

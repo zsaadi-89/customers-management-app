@@ -7,6 +7,16 @@
     density="compact"
   >
     <template v-slot:[`item.actions`]="{ item }">
+      <v-btn
+        variant="text"
+        class="pa-0"
+        :to="{
+          name: 'edit-client',
+          params: { id: item.id },
+        }"
+      >
+        <v-icon color="primary">mdi-pencil</v-icon>
+      </v-btn>
       <v-btn variant="text" class="pa-0" @click="deleteClient(item.id)">
         <v-icon color="error">mdi-delete</v-icon>
       </v-btn>

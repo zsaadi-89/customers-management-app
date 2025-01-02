@@ -14,6 +14,7 @@ const typeDefs = `
 
   type Query {
     clients: [Client!]!
+    client(id: Int!): Client!
   }
 
   type Mutation {
@@ -26,6 +27,7 @@ const typeDefs = `
 const resolvers = {
   Query: {
     clients: () => prisma.client.findMany(),
+    client: (_, { id }) => prisma.client.findUnique({ where: { id } }),
   },
   Mutation: {
     createClient: (_, { name, email }) =>
