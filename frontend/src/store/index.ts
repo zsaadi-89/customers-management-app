@@ -1,9 +1,10 @@
 import { createStore } from "vuex";
 import apolloClient from "@/plugins/apollo-client";
 import { gql } from "@apollo/client";
+import { Client } from "@/types/client.types";
 
 export interface State {
-  clients: Array<{ id: string; name: string; email: string }>;
+  clients: Array<Client>;
 }
 
 export const store = createStore<State>({
@@ -12,7 +13,7 @@ export const store = createStore<State>({
   },
   mutations: {
     setClients(state, clients) {
-      state.clients = [...clients];
+      state.clients = clients;
     },
   },
   actions: {
@@ -27,7 +28,7 @@ export const store = createStore<State>({
             }
           }
         `,
-        fetchPolicy: "network-only", // Assure que les données sont toujours fraîches
+        fetchPolicy: "cache-first", // N'appelle pas le réseau si les données sont en cache
       });
       commit("setClients", response.data.clients);
     },
