@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "^6.1.0",
+    "axios": "^1.7.9",
     "graphql": "^16.10.0",
     "graphql-yoga": "^5.10.6",
     "prisma": "^6.1.0",
